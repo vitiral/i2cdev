@@ -1,29 +1,26 @@
 #!/usr/bin/python
-import time
 import io
 import fcntl
 from threading import Lock
 
+
 class i2c(object):
     lock = Lock()
-    def __init__(self, device, bus):
 
-        self.fr = io.open("/dev/i2c-"+str(bus), "rb", buffering=0)
-        self.fw = io.open("/dev/i2c-"+str(bus), "wb", buffering=0)
+    def __init__(self, device, bus, address):
+        self.fr = io.open("/dev/i2c-" + str(bus), "rb", buffering=0)
+        self.fw = io.open("/dev/i2c-" + str(bus), "wb", buffering=0)
 
         # set device address
+        fcntl.ioctl(self.fr, address, device)
+        fcntl.ioctl(self.fw, address, device)
 
-        fcntl.ioctl(self.fr, I2C_SLAVE, device)
-        fcntl.ioctl(self.fw, I2C_SLAVE, device)
+    def write(self, data: bytes):
+        self.fw.write(data)
 
-    def write(self, bytes):
-        self.fw.write(bytes)
-
-    def read(self, bytes):
-        return self.fr.read(bytes)
+    def read(self, num: int):
+        return self.fr.read(num)
 
     def close(self):
         self.fw.close()
         self.fr.close()
-
-
