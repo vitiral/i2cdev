@@ -3,10 +3,12 @@ import io
 import fcntl
 from threading import Lock
 
+__version__ = '1.2.2'
+
 IOCTL_I2C_SLAVE = 0x0703
 
 
-class i2c(object):
+class I2C(object):
     '''i2c object that can be read and written to.
 
     Args:

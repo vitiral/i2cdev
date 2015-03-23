@@ -1,10 +1,11 @@
 #!/usr/bin/env python
 
 from setuptools import setup
+from i2cdev import __version__
 
 setup(
     name='i2cdev',
-    version='1.2.1',
+    version=__version__,
     description='Simple I2C Library for linux',
     author='Garrett Berg',
     author_email='garrett@cloudformdesign.com',
