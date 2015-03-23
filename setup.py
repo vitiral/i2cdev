@@ -3,11 +3,11 @@
 from setuptools import setup
 
 setup(
-    name='raspi_i2c',
-    version='1.1',
-    description='I2c Library for the raspberry pi',
+    name='i2cdev',
+    version='1.2',
+    description='Simple I2C Library for linux',
     author='Garrett Berg',
-    author_email='googberg@gmail.com',
-    url='cloudformdesign.com',
-    py_modules=['raspi_i2c'],
+    author_email='garrett@cloudformdesign.com',
+    url='git@github.com:cloudformdesign/i2cdev.git',
+    py_modules=['i2cdev'],
 )
